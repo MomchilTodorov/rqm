@@ -1,17 +1,25 @@
 {
+  "homepage": "http://momchiltodorov.github.io/rqm",
   "name": "rqm",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animated-transition-group": "^1.0.22",
+    "axios": "^0.19.0",
     "react": "^16.8.6",
+    "react-css-transition": "^0.7.4",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-transition-group": "^1.2.1",
+    "resolve-url-loader": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -27,5 +35,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "bootstrap": "^4.3.1",
+    "bootstrap-loader": "^3.0.4",
+    "gh-pages": "^2.0.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0",
+    "tether": "^1.4.7"
   }
 }

@@ -1,0 +1,89 @@
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 750ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 750ms ease-in;
+}
+
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity 1500ms ease-in;
+}
+
+
+#quote-box {
+  background-color: white;
+  width: 30%;
+  max-height: auto;
+  margin: auto;
+  position: relative;
+  display: block;
+  top: 200px;
+  overflow: hidden;
+  border-radius: 25px;
+
+}
+
+#text {
+  text-align: center;
+  margin: auto;
+  position: relative;
+  top: 15px;
+}
+
+#author {
+  text-align: right;
+  font-size: 18px;
+  position: relative;
+  top: 50px;
+  margin-right: 9px;
+  font-variant: Small-Caps;
+}
+
+#tweet-box {
+  text-align: center;
+  width: 200px;
+  height: 120px;
+  margin: auto;
+  
+}
+
+#tweet-quote img {
+  width: 16%;
+  height: auto;
+  border-radius: 25px;
+  top: 75px;
+  right: 170px;
+  position: relative;
+}
+
+#new-quote {
+  float: right;
+  margin-top: 70px;
+  margin-right: 10px;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+#quote-image {
+  width: 8%;
+  height: auto;
+ position: relative;
+  bottom: 3px;
+  right: 5px;
+}
