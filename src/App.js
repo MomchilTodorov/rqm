@@ -2,9 +2,9 @@ import React from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Spinner from './Spinner';
 
 import twitter from './css/images/twitter.png';
-import quotes from './css/images/quotes.png';
 import './css/main.css';
 import {
   COLORFULBUTTON,
@@ -16,18 +16,16 @@ class App extends React.Component {
   state = {
     quote: '',
     author: '',
-    id: null,
     color: Math.floor(Math.random() * 7)
   };
 
   componentWillMount() {
     axios
-      .get('http://quotes.stormconsultancy.co.uk/random.json')
+      .get('https://cors-anywhere.herokuapp.com/https://api.quotable.io/random')
       .then(response => {
         this.setState({
-          quote: response.data.quote,
-          author: response.data.author,
-          id: response.data.id
+          quote: response.data.content,
+          author: response.data.author
         });
       });
 
@@ -68,12 +66,11 @@ class App extends React.Component {
 
   indexGenerate = () => {
     axios
-      .get('http://quotes.stormconsultancy.co.uk/random.json')
+      .get('https://cors-anywhere.herokuapp.com/https://api.quotable.io/random')
       .then(response => {
         this.setState({
-          quote: response.data.quote,
+          quote: response.data.content,
           author: response.data.author,
-          id: response.data.id,
           color: Math.floor(Math.random() * 7)
         });
       });
@@ -87,7 +84,7 @@ class App extends React.Component {
     if (this.state.quote) {
       return (
         <CSSTransitionGroup
-          key={this.state.id}
+          key={this.state.quote}
           transitionName="example"
           transitionAppear={true}
           transitionAppearTimeout={1500}
@@ -97,31 +94,28 @@ class App extends React.Component {
           <div id="quote-box">
             <div>
               <h2 className={generateTxtColor} id="text">
-                <img
-                  className={generateBgColor}
-                  id="quote-image"
-                  src={quotes}
-                  alt=""
-                />
+                <i class="quote left icon" />
                 {this.state.quote}
               </h2>
+            </div>
+            <div>
               <h3 className={generateTxtColor} id="author">
                 {this.state.author}
               </h3>
             </div>
-
-            <button
-              className={generateBtnColor}
-              onClick={this.indexGenerate}
-              id="new-quote"
-            >
-              New quote
-            </button>
-            <div id="tweet-box">
+            <div>
+              <button
+                className={generateBtnColor}
+                onClick={this.indexGenerate}
+                id="new-quote"
+              >
+                New quote
+              </button>
+            </div>
+            <div>
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                id="tweet-quote"
                 href={
                   'https://twitter.com/intent/tweet?text=' +
                   '"' +
@@ -131,63 +125,19 @@ class App extends React.Component {
                   this.state.author
                 }
               >
-                <img className={generateBgColor} src={twitter} alt="" />
+                <img
+                  id="tweet-quote"
+                  className={generateBgColor}
+                  src={twitter}
+                  alt=""
+                />
               </a>
             </div>
           </div>
         </CSSTransitionGroup>
       );
     } else {
-      return (
-        <CSSTransitionGroup
-          key={this.state.id}
-          transitionName="example"
-          transitionAppear={true}
-          transitionAppearTimeout={1500}
-          transitionEnter={false}
-          transitionLeave={false}
-        >
-          <div id="quote-box">
-            <h2 className={generateTxtColor} id="text">
-              <img
-                className={generateBgColor}
-                id="quote-image"
-                src={quotes}
-                alt=""
-              />
-              {this.state.quote}
-            </h2>
-            <h3 className={generateTxtColor} id="author">
-              {this.state.author}
-            </h3>
-
-            <button
-              className={generateBtnColor}
-              onClick={this.indexGenerate}
-              id="new-quote"
-            >
-              New quote
-            </button>
-            <div id="tweet-box">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                id="tweet-quote"
-                href={
-                  'https://twitter.com/intent/tweet?text=' +
-                  '"' +
-                  this.state.quote +
-                  '"' +
-                  ' ' +
-                  this.state.author
-                }
-              >
-                <img className={generateBgColor} src={twitter} alt="" />
-              </a>
-            </div>
-          </div>
-        </CSSTransitionGroup>
-      );
+      return <Spinner />;
     }
   }
 }
