@@ -1,3 +1,3 @@
-* Random Quote Machine created with HTML, Bootstrap and ReactJS.
+* Random Quote Machine app created with HTML, Bootstrap and ReactJS 
 
-A new quote is generated every time a user clicks the button. There is also a twitter button that allows you to tweet your favourite quote. 
+ The app makes an API request to https://github.com/lukePeavey/quotable (a REST API for famous quotes) and returns a single random quote from the database on button click. 
